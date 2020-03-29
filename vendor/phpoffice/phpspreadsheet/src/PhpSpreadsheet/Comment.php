@@ -21,21 +21,21 @@ class Comment implements IComparable
     private $text;
 
     /**
-     * Comment width (CSS style, i.e. XXpx or YYpt).
+     * Comment width (css style, i.e. XXpx or YYpt).
      *
      * @var string
      */
     private $width = '96pt';
 
     /**
-     * Left margin (CSS style, i.e. XXpx or YYpt).
+     * Left margin (css style, i.e. XXpx or YYpt).
      *
      * @var string
      */
     private $marginLeft = '59.25pt';
 
     /**
-     * Top margin (CSS style, i.e. XXpx or YYpt).
+     * Top margin (css style, i.e. XXpx or YYpt).
      *
      * @var string
      */
@@ -49,7 +49,7 @@ class Comment implements IComparable
     private $visible = false;
 
     /**
-     * Comment height (CSS style, i.e. XXpx or YYpt).
+     * Comment height (css style, i.e. XXpx or YYpt).
      *
      * @var string
      */
@@ -130,7 +130,7 @@ class Comment implements IComparable
     }
 
     /**
-     * Get comment width (CSS style, i.e. XXpx or YYpt).
+     * Get comment width (css style, i.e. XXpx or YYpt).
      *
      * @return string
      */
@@ -140,7 +140,7 @@ class Comment implements IComparable
     }
 
     /**
-     * Set comment width (CSS style, i.e. XXpx or YYpt).
+     * Set comment width (css style, i.e. XXpx or YYpt).
      *
      * @param string $width
      *
@@ -154,7 +154,7 @@ class Comment implements IComparable
     }
 
     /**
-     * Get comment height (CSS style, i.e. XXpx or YYpt).
+     * Get comment height (css style, i.e. XXpx or YYpt).
      *
      * @return string
      */
@@ -164,7 +164,7 @@ class Comment implements IComparable
     }
 
     /**
-     * Set comment height (CSS style, i.e. XXpx or YYpt).
+     * Set comment height (css style, i.e. XXpx or YYpt).
      *
      * @param string $value
      *
@@ -178,7 +178,7 @@ class Comment implements IComparable
     }
 
     /**
-     * Get left margin (CSS style, i.e. XXpx or YYpt).
+     * Get left margin (css style, i.e. XXpx or YYpt).
      *
      * @return string
      */
@@ -188,7 +188,7 @@ class Comment implements IComparable
     }
 
     /**
-     * Set left margin (CSS style, i.e. XXpx or YYpt).
+     * Set left margin (css style, i.e. XXpx or YYpt).
      *
      * @param string $value
      *
@@ -202,7 +202,7 @@ class Comment implements IComparable
     }
 
     /**
-     * Get top margin (CSS style, i.e. XXpx or YYpt).
+     * Get top margin (css style, i.e. XXpx or YYpt).
      *
      * @return string
      */
@@ -212,7 +212,7 @@ class Comment implements IComparable
     }
 
     /**
-     * Set top margin (CSS style, i.e. XXpx or YYpt).
+     * Set top margin (css style, i.e. XXpx or YYpt).
      *
      * @param string $value
      *

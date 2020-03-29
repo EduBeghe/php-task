@@ -4,7 +4,7 @@
       <meta charset="UTF-8">
       <title>PHP Task</title>
       <style>
-        <?php include 'CSS/main.css'; ?>
+        <?php include 'css/main.css'; ?>
       </style>
   </head>
   <body>

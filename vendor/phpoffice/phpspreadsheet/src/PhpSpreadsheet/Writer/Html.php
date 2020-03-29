@@ -56,21 +56,21 @@ class Html extends BaseWriter
     private $embedImages = false;
 
     /**
-     * Use inline CSS?
+     * Use inline css?
      *
      * @var bool
      */
     private $useInlineCss = false;
 
     /**
-     * Use embedded CSS?
+     * Use embedded css?
      *
      * @var bool
      */
     private $useEmbeddedCSS = true;
 
     /**
-     * Array of CSS styles.
+     * Array of css styles.
      *
      * @var array
      */
@@ -160,7 +160,7 @@ class Html extends BaseWriter
         $saveArrayReturnType = Calculation::getArrayReturnType();
         Calculation::setArrayReturnType(Calculation::RETURN_ARRAY_AS_VALUE);
 
-        // Build CSS
+        // Build css
         $this->buildCSS(!$this->useInlineCss);
 
         // Open file
@@ -743,7 +743,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Generate CSS styles.
+     * Generate css styles.
      *
      * @param bool $generateSurroundingHTML Generate surrounding HTML tags? (&lt;style&gt; and &lt;/style&gt;)
      *
@@ -753,7 +753,7 @@ class Html extends BaseWriter
      */
     public function generateStyles($generateSurroundingHTML = true)
     {
-        // Build CSS
+        // Build css
         $css = $this->buildCSS($generateSurroundingHTML);
 
         // Construct HTML
@@ -782,7 +782,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Build CSS styles.
+     * Build css styles.
      *
      * @param bool $generateSurroundingHTML Generate surrounding HTML style? (html { })
      *
@@ -802,7 +802,7 @@ class Html extends BaseWriter
             $this->calculateSpans();
         }
 
-        // Construct CSS
+        // Construct css
         $css = [];
 
         // Start styles
@@ -813,7 +813,7 @@ class Html extends BaseWriter
             $css['html']['background-color'] = 'white';
         }
 
-        // CSS for comments as found in LibreOffice
+        // css for comments as found in LibreOffice
         $css['a.comment-indicator:hover + div.comment'] = [
             'background' => '#ffd',
             'position' => 'absolute',
@@ -953,7 +953,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Create CSS style.
+     * Create css style.
      *
      * @param Style $pStyle
      *
@@ -961,7 +961,7 @@ class Html extends BaseWriter
      */
     private function createCSSStyle(Style $pStyle)
     {
-        // Create CSS
+        // Create css
         return array_merge(
             $this->createCSSStyleAlignment($pStyle->getAlignment()),
             $this->createCSSStyleBorders($pStyle->getBorders()),
@@ -971,7 +971,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Create CSS style (\PhpOffice\PhpSpreadsheet\Style\Alignment).
+     * Create css style (\PhpOffice\PhpSpreadsheet\Style\Alignment).
      *
      * @param Alignment $pStyle \PhpOffice\PhpSpreadsheet\Style\Alignment
      *
@@ -979,10 +979,10 @@ class Html extends BaseWriter
      */
     private function createCSSStyleAlignment(Alignment $pStyle)
     {
-        // Construct CSS
+        // Construct css
         $css = [];
 
-        // Create CSS
+        // Create css
         $css['vertical-align'] = $this->mapVAlign($pStyle->getVertical());
         if ($textAlign = $this->mapHAlign($pStyle->getHorizontal())) {
             $css['text-align'] = $textAlign;
@@ -995,7 +995,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Create CSS style (\PhpOffice\PhpSpreadsheet\Style\Font).
+     * Create css style (\PhpOffice\PhpSpreadsheet\Style\Font).
      *
      * @param Font $pStyle
      *
@@ -1003,10 +1003,10 @@ class Html extends BaseWriter
      */
     private function createCSSStyleFont(Font $pStyle)
     {
-        // Construct CSS
+        // Construct css
         $css = [];
 
-        // Create CSS
+        // Create css
         if ($pStyle->getBold()) {
             $css['font-weight'] = 'bold';
         }
@@ -1029,7 +1029,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Create CSS style (Borders).
+     * Create css style (Borders).
      *
      * @param Borders $pStyle Borders
      *
@@ -1037,10 +1037,10 @@ class Html extends BaseWriter
      */
     private function createCSSStyleBorders(Borders $pStyle)
     {
-        // Construct CSS
+        // Construct css
         $css = [];
 
-        // Create CSS
+        // Create css
         $css['border-bottom'] = $this->createCSSStyleBorder($pStyle->getBottom());
         $css['border-top'] = $this->createCSSStyleBorder($pStyle->getTop());
         $css['border-left'] = $this->createCSSStyleBorder($pStyle->getLeft());
@@ -1050,7 +1050,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Create CSS style (Border).
+     * Create css style (Border).
      *
      * @param Border $pStyle Border
      *
@@ -1058,14 +1058,14 @@ class Html extends BaseWriter
      */
     private function createCSSStyleBorder(Border $pStyle)
     {
-        //    Create CSS - add !important to non-none border styles for merged cells
+        //    Create css - add !important to non-none border styles for merged cells
         $borderStyle = $this->mapBorderStyle($pStyle->getBorderStyle());
 
         return $borderStyle . ' #' . $pStyle->getColor()->getRGB() . (($borderStyle == 'none') ? '' : ' !important');
     }
 
     /**
-     * Create CSS style (Fill).
+     * Create css style (Fill).
      *
      * @param Fill $pStyle Fill
      *
@@ -1076,7 +1076,7 @@ class Html extends BaseWriter
         // Construct HTML
         $css = [];
 
-        // Create CSS
+        // Create css
         $value = $pStyle->getFillType() == Fill::FILL_NONE ?
             'white' : '#' . $pStyle->getStartColor()->getRGB();
         $css['background-color'] = $value;
@@ -1291,7 +1291,7 @@ class Html extends BaseWriter
                 // convert newline "\n" to '<br>'
                 $cellData = nl2br($cellData);
 
-                // Extend CSS class?
+                // Extend css class?
                 if (!$this->useInlineCss) {
                     $cssClass .= ' style' . $cell->getXfIndex();
                     $cssClass .= ' ' . $cell->getDataType();
@@ -1408,7 +1408,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Takes array where of CSS properties / values and converts to CSS string.
+     * Takes array where of css properties / values and converts to css string.
      *
      * @param array $pValue
      *
@@ -1474,7 +1474,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Get use inline CSS?
+     * Get use inline css?
      *
      * @return bool
      */
@@ -1484,7 +1484,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Set use inline CSS?
+     * Set use inline css?
      *
      * @param bool $pValue
      *
@@ -1498,7 +1498,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Get use embedded CSS?
+     * Get use embedded css?
      *
      * @return bool
      */
@@ -1508,7 +1508,7 @@ class Html extends BaseWriter
     }
 
     /**
-     * Set use embedded CSS?
+     * Set use embedded css?
      *
      * @param bool $pValue
      *

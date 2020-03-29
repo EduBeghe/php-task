@@ -262,7 +262,7 @@ abstract class Pdf extends Html
 
         //  Set PDF
         $this->isPdf = true;
-        //  Build CSS
+        //  Build css
         $this->buildCSS(true);
 
         return $fileHandle;
