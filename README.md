@@ -6,4 +6,4 @@ As part of a challenge for a job position i was given, i came across this task t
 * Use a simple PHP script to solve whats requested 
 
 # Acceptance Criteria:
-* If i looked up the address for the line with ID 5. We would like to collect the data circling in red.
+* If i looked up the address for the line with ID 5. We would like to collect the popular times the US Social Security Administration Office on that location
