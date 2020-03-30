@@ -53,15 +53,12 @@
 
                 <h3>Popular Times</h3>
 
-                //TODO: Add populartimes library, as Google API doesn't provide any information on Popular Times.
-                To see the JSON data Google provides for this particular Social Security Administration Office use the following link
-
                 <br>
                 <br>
 
             <?php
 
-                $placesData = getPlaceData($placeId);
+                $placesData = getPlaceData($placeId, $latitude, $longitude);
 
           } else {
             echo "No map found.";
