@@ -58,7 +58,74 @@
 
             <?php
 
-                $placesData = getPlaceData($placeId, $latitude, $longitude);
+                $placesData = getPlaceData($latitude, $longitude);
+
+                if (!empty($placesData)) {
+                  ?>
+                  <select onchange="refreshChart()" id="weekdaySelect">
+                    <option value="Mo">Monday</option>
+                    <option value="Tu">Tuesday</option>
+                    <option value="We">Wednesday</option>
+                    <option value="Th">Thursday</option>
+                    <option value="Fr">Friday</option>
+                    <option value="Sa">Saturday</option>
+                    <option value="Su">Sunday</option>
+                  </select>
+
+                  <script>
+                      var rawData = <?php echo json_encode($placesData, JSON_NUMERIC_CHECK); ?>
+
+                      window.onload = function () {
+                          refreshChart()
+                      };
+
+                      function refreshChart() {
+                          let data = getSelectedDayData();
+                          handleWeekdayChange(data);
+                      }
+
+                      function getSelectedDayData() {
+                          let select = document.getElementById("weekdaySelect");
+                          let selectedDayValue = select.value;
+                          let selectedDayText = select.options[select.selectedIndex].text;
+                          let data = [];
+                          for (let step = 0; step < 24; step++) {
+                              data[step] = {};
+                              if (window.rawData[selectedDayValue][step]) {
+                                  data[step]['x'] = window.rawData[selectedDayValue][step]['hour'];
+                                  data[step]['y'] = window.rawData[selectedDayValue][step]['occupancyPercent'];
+                              }
+                          }
+                          return data;
+                      }
+
+                      function handleWeekdayChange(data) {
+                          let select = document.getElementById("weekdaySelect");
+                          let selectedDayText = select.options[select.selectedIndex].text;
+                          var chart = new CanvasJS.Chart("chartContainer", {
+                              animationEnabled: true,
+                              exportEnabled: true,
+                              theme: "light1", // "light1", "light2", "dark1", "dark2"
+                              title:{
+                                  text: "Popular Times for " + selectedDayText
+                              },
+                              data: [{
+                                  type: "column", //change type to bar, line, area, pie, etc
+                                  //indexLabel: "{y}", //Shows y value on all Data Points
+                                  indexLabelFontColor: "#5A5757",
+                                  indexLabelPlacement: "outside",
+                                  dataPoints: data
+                              }]
+                          });
+                          chart.render();
+                      }
+                  </script>
+
+
+                  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                  <?php
+                }
 
           } else {
             echo "No map found.";
@@ -66,7 +133,7 @@
 
         } else {
             ?>
-                <label>Please select an address to see the map.</label>
+                <label>Please select an address to see the map. Normal requests take about 1-2 minutes.</label>
             <?php
         }
       ?>

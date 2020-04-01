@@ -1,6 +1,7 @@
 {
     "require": {
         "phpoffice/phpspreadsheet": "^1.11",
-        "ext-curl": "^7.2"
+        "ext-curl": "^7.2",
+        "ext-json": "^1.6"
     }
 }
