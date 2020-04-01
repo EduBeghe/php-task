@@ -14,7 +14,7 @@
       <?php include("functions/places_information.php");?>
       <h1>PHP Task</h1>
       <br>
-      <label>Please select one of the following US Social Security Administration Offices Address</label>
+      <label>Please select one of the following US Social Security Administration Office Addresses</label>
       <br>
       <br>
       <form method="post" action="">
